@@ -21,21 +21,21 @@ GPIO.setup(FLAME_PIN, GPIO.IN)
 GPIO.setup(RED_PIN, GPIO.OUT)
 
 try:
-	while True:
-		flame_state = GPIO.input(FLAME_PIN)
+    while True:
+        flame_state = GPIO.input(FLAME_PIN)
 
-		if flame_state == GPIO.HIGH:
-			GPIO.output(RED_PIN, GPIO.HIGH)
-			message = "Fire, RUN!"
-			print (message)
-			db.child("messages").push(message)
-			time.sleep(2)
-		else:
-			GPIO.output(RED_PIN, GPIO.LOW)
-			message="No fire, chill"
-			print(message)
-			db.child("messages").push(message)
-			time.sleep(2)
-            
+        if flame_state == GPIO.HIGH:
+            GPIO.output(RED_PIN, GPIO.HIGH)
+            message = 1
+            print(message)
+            db.child("fire").push(message)
+            time.sleep(5)
+        else:
+            GPIO.output(RED_PIN, GPIO.LOW)
+            message= 0
+            print(message)
+            db.child("fire").push(message)
+            time.sleep(5)
+           
 except KeyboardInterrupt:
-	GPIO.cleanup()
+    GPIO.cleanup()
