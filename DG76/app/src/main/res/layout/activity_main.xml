@@ -17,13 +17,34 @@
         tools:context=".MainActivity">
 
         <TextView
+            android:id="@+id/fireText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:text="Your house is on fire!"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/callingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Call 112"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/messageButton"
+            app:layout_constraintTop_toBottomOf="@+id/fireText"/>
+
+        <Button
+            android:id="@+id/messageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Message 113"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/callingButton"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fireText"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
