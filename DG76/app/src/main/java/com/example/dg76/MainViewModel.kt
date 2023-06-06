@@ -8,6 +8,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val fireText = MutableLiveData<String>("")
     val onCallButtonClicked = MutableLiveData(false)
     val onMessageButtonClicked = MutableLiveData(false)
+    val onResolvedButtonClicked =MutableLiveData(false)
     fun onClickCallButton() {
         onCallButtonClicked.value = true
     }
@@ -15,4 +16,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun onClickMessageButton() {
         onMessageButtonClicked.value = true
     }
+
+    fun onClickResolvedButton()
+    {
+        onResolvedButtonClicked.value = true
+    }
+
+
 }

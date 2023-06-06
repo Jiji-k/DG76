@@ -27,26 +27,39 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/callingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Call 112"
-            android:onClick="@{()->mainViewModel.onClickCallButton()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/messageButton"
-            app:layout_constraintTop_toBottomOf="@+id/fireText"/>
-
-        <Button
             android:id="@+id/messageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Message 113"
             android:onClick="@{()->mainViewModel.onClickMessageButton()}"
+            android:text="Message 113"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/callingButton"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fireText"/>
+            app:layout_constraintTop_toBottomOf="@+id/fireText"
+            app:layout_constraintVertical_bias="0.246" />
+
+        <Button
+            android:id="@+id/callingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->mainViewModel.onClickCallButton()}"
+            android:text="Call 112"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/messageButton"
+            app:layout_constraintTop_toBottomOf="@+id/fireText"
+            app:layout_constraintVertical_bias="0.246" />
+
+        <Button
+            android:id="@+id/resolvedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->mainViewModel.onClickResolvedButton()}"
+            android:text="The fire has been put down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/callingButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
