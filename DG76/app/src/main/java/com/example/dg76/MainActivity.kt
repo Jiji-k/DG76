@@ -35,23 +35,25 @@ class MainActivity : AppCompatActivity() {
     private fun takeInputFromCloud() {
         // Initialize Firebase database and reference
         val database = FirebaseDatabase.getInstance()
+        //TODO change to the message child
         val myRef = database.getReference("fire")
         privateText = binding.fireText
 
         // Read data from Firebase
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Retrieve the data from the snapshot as a HashMap
-                val data = dataSnapshot.getValue<HashMap<String, Any>>()
+                // Clear the previous text
+                privateText.text = ""
+                var value =""
+                // Iterate over the child nodes
+                for (childSnapshot in dataSnapshot.children) {
+                    // Retrieve the value associated with each child node
+                    value = childSnapshot.value.toString()
 
-                // Check if the data is not null and contains the desired key
-                if (data != null && data.containsKey("yourKey")) {
-                    // Retrieve the value associated with "yourKey" as a String
-                    val value = data["yourKey"].toString()
-
-                    // Update the fireText TextView with the retrieved value
-                    privateText.text = value
+                    // Append the value to the fireText TextView
+                    //privateText.append(value + "\n")
                 }
+                privateText.append(value + "\n")
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -59,8 +61,8 @@ class MainActivity : AppCompatActivity() {
                 Log.e("Firebase", "Failed to read value: ${databaseError.toException()}")
             }
         })
-
     }
+
 
     private fun CallForHelp() {
         mainViewModel.onCallButtonClicked.observe(this) { value ->
