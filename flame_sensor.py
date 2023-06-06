@@ -30,6 +30,8 @@ try:
             print(message)
             db.child("fire").push(message)
             time.sleep(5)
-           
+        else:
+            GPIO.output(RED_PIN, GPIO.LOW)
+               
 except KeyboardInterrupt:
     GPIO.cleanup()
